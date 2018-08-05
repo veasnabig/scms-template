@@ -51,6 +51,7 @@ $margin:16px;
     line-height: $cardHeight;
     margin-right: $margin;
     transition: all .5s;
+    font-family: 'khPreyVeng'
 }
 
 .card-wrapper-icon {

@@ -1,23 +1,23 @@
 <template>
 <div>
+
     <div class="md-layout md-gutter scms-card-wrapper-modify">
-        <div class="md-layout-item md-size-25" @click="showDialog=true">
-            <scms-card :cardItem='cardItem' />
+        <div class="md-layout-item md-size-20">
+            <scms-card :cardItem='cardItem' @click.native='showAddCoursesDialog=true' />
         </div>
     </div>
-    <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
+    <md-table v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header style="height:70vh;">
         <md-table-toolbar>
             <div class="md-toolbar-section-start">
             </div>
-
             <md-field md-clearable class="md-toolbar-section-end">
                 <md-input placeholder="Search by name..." v-model="search" @input="searchOnTable" />
             </md-field>
         </md-table-toolbar>
 
-        <md-table-empty-state md-label="No users found" :md-description="`No user found for this '${search}' query. Try a different search term or create a new user.`">
+        <!-- <md-table-empty-state md-label="No users found" :md-description="`No user found for this '${search}' query. Try a different search term or create a new user.`">
             <md-button class="md-primary md-raised" @click="newUser">Create New User</md-button>
-        </md-table-empty-state>
+        </md-table-empty-state> -->
 
         <md-table-row slot="md-table-row" slot-scope="{ item }">
             <md-table-cell style="text-align:right" md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
@@ -37,22 +37,7 @@
         </md-table-row>
     </md-table>
 
-    <md-dialog :md-active.sync="showDialog">
-        <md-dialog-title>Preferences</md-dialog-title>
-
-        <md-tabs md-dynamic-height>
-            <md-tab md-label="General">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam mollitia dolorum dolores quae commodi impedit possimus qui, atque at voluptates cupiditate. Neque quae culpa suscipit praesentium inventore ducimus ipsa aut.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam mollitia dolorum dolores quae commodi impedit possimus qui, atque at voluptates cupiditate. Neque quae culpa suscipit praesentium inventore ducimus ipsa aut.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam mollitia dolorum dolores quae commodi impedit possimus qui, atque at voluptates cupiditate. Neque quae culpa suscipit praesentium inventore ducimus ipsa aut.</p>
-            </md-tab>
-        </md-tabs>
-
-        <md-dialog-actions>
-            <md-button class="md-primary" @click="showDialog=false">Close</md-button>
-            <md-button class="md-primary" @click="showDialog=false">Save</md-button>
-        </md-dialog-actions>
-    </md-dialog>
+    <add-courses :showAddCoursesDialog='showAddCoursesDialog' :cardItem='cardItem' @closeDialog='showAddCoursesDialog=false' />
 
 </div>
 </template>
@@ -62,10 +47,11 @@ import {
     colors
 } from '@/styles/colors.js';
 import ScmsCard from '@/components/SCMSCard';
+import AddCourses from './AddCourses.vue';
+
 const toLower = text => {
     return text.toString().toLowerCase()
 }
-
 const searchByName = (items, term) => {
     if (term) {
         return items.filter(item => toLower(item.name).includes(toLower(term)))
@@ -74,44 +60,38 @@ const searchByName = (items, term) => {
 }
 export default {
     components: {
-        ScmsCard
+        ScmsCard,
+        AddCourses
     },
     data: () => ({
-        showDialog: false,
+        showAddCoursesDialog: false,
         cardItem: {
-            name: 'Add New Courses',
+            name: 'បង្កើតវគ្គថ្មី',
             icon: 'icon-courses',
             iconBg: {
-                background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`
+                background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`,
             }
         },
         search: null,
         searched: [],
-        users: [{
-                id: 1,
-                name: "Basic Computer",
-                price: 20,
-                duration: '2 months'
-            },
-            {
-                id: 2,
-                name: "Graphic Design",
-                price: 120,
-                duration: '4 months'
-            },
-
-        ]
+        // courses: []
     }),
+    computed: {
+        courses() {
+            return this.$store.getters.getCourses;
+        }
+    },
     methods: {
-        newUser() {
-            window.alert('Noop')
-        },
+        newUser() {},
         searchOnTable() {
-            this.searched = searchByName(this.users, this.search)
+            this.searched = searchByName(this.courses, this.search)
         },
+        show() {
+            this.showAddCoursesDialog = !this.showAddCoursesDialog;
+        }
     },
     created() {
-        this.searched = this.users
+        this.searched = this.courses
     }
 }
 </script>
@@ -131,7 +111,6 @@ export default {
 .md-field {
     max-width: 300px;
 }
-
 .md-table-cell {
     text-align: left;
 }

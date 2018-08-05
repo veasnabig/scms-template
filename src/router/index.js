@@ -7,43 +7,35 @@ export default new Router({
   routes: [
     {
       path: '*',
-      meta: {
-        // public: true,
-      },
       redirect: {
         path: '/404'
       }
     },  
     {
       path: '/404',
-      meta: {
-        // public: true,
-      },
-      name: 'NotFound',
+      name: 'រកមិនឃើញ',
       component: () => import(
-        /* webpackChunkName: "routes" */
-        /* webpackMode: "lazy-once" */
         `@/pages/NotFound.vue`
       )
     },
     {
       path: '/',
-      name: 'Dashboard',
+      name: 'ផ្ទាំងគ្រប់គ្រង',
       component: () => import(`@/pages/Dashboard.vue`)
     },
     {
       path: '/student',
-      name: 'Student',
+      name: 'សិស្ស',
       component: () => import(`@/pages/Student.vue`)
     },
     {
       path: '/courses',
-      name: 'Courses',
+      name: 'វគ្គបណ្តុះបណ្តាល',
       component: () => import(`@/pages/Courses/Courses.vue`)
     },
     {
       path:'/setting',
-      name:'Setting',
+      name:'ការកំណត់',
       component:()=>import(`@/pages/Setting.vue`)
     }
   ]

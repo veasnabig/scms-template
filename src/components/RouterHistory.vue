@@ -5,6 +5,7 @@
         <!-- route-history -->
         <span v-for="route,key in routeLinks" :key="key" class="wrapper-router-history-btn">
             <md-button 
+            class="md-button-text"
             :to="route.path"
             
             :class="{activeRouteColor:key == selected}"
@@ -19,7 +20,7 @@
 
         <!-- close-all -->
         <span style="position:absolute;right:0;">
-            <md-button @click="removeAllRouteHistory" class="md-accent md-raised md-button-modify">Clean</md-button>
+            <md-button @click="removeAllRouteHistory" class="md-accent md-raised md-button-modify md-button-text">សម្អាត</md-button>
         </span>
         <!-- class="md-primary md-raised md-button-modify" -->
 
@@ -82,7 +83,10 @@ export default {
     border: 1.5px solid #fff;
     padding: 10px;
 }
-
+.md-button-text{
+    font-family: 'KhPreyVeng';
+    font-size: 18px;
+}
 .md-icon-button-close {
     margin-left: -30px;
     margin-top: -15px;

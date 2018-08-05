@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'KhPreyVeng';
+    src:url('../assets/fonts/KhPreyVeng.ttf?zcpscj') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'KhBaphnom';
+    src:url('../assets/fonts/KhBaphnom.ttf?zcpscj') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'KhmerOSMuolpali';
+    src:url('../assets/fonts/KhmerOS_muolpali.ttf?zcpscj') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'KhmerOSBattambang';
+    src:url('../assets/fonts/KhmerOSBattambang.ttf?zcpscj') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

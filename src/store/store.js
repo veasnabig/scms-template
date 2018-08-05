@@ -1,29 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import mutations from './mutations';
+import getters from './getters';
+import {courses} from './data/index';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    routeHistorys: []
+    routeHistorys: [],
+    courses
   },
-  getters: {
-    getRoute(state) {
-      return state.routeHistorys;
-    }
-  },
-  mutations: {
-    addRouteHistory(state, route) {
-      const existRoute  = state.routeHistorys.filter(o => o.name === route.name)
-      if(existRoute.length === 0){
-        state.routeHistorys.push(route);
-      }
-    },
-    removeRouteHistory(state,route){
-        const routeHistory = state.routeHistorys.find(o=>o.name===route.name);
-        state.routeHistorys.splice(state.routeHistorys.indexOf(routeHistory), 1);
-    },
-    removeAllRouteHistory(state){
-      state.routeHistorys=[];
-    }
-  }
+  getters,
+  mutations
 })

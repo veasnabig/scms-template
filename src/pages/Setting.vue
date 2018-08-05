@@ -22,7 +22,7 @@ export default {
     },
     data: () => ({
         cardItem: [{
-                name: 'Courses',
+                name: 'វគ្គបណ្តុះបណ្តាល',
                 icon: 'icon-courses',
                 path: '/courses',
                 iconBg: {
@@ -30,7 +30,7 @@ export default {
                 }
             },
             {
-                name: 'Teacher',
+                name: 'គ្រូបង្គោល',
                 icon: 'icon-teacher',
                 path: '/teacher',
                 iconBg: {
@@ -38,14 +38,14 @@ export default {
                 }
             },
             {
-                name: 'Attendance',
+                name: 'គ្រប់គ្រងអវត្តមាន',
                 icon: 'icon-attendance',
                 path: '/attendance',
                 iconBg: {
                     background: `linear-gradient(${colors.lightRed}, ${colors.red})`
                 }
             }, {
-                name: 'User',
+                name: 'អ្នកប្រើប្រាស់',
                 icon: 'icon-student',
                 path: '/user',
                 iconBg: {
@@ -53,7 +53,7 @@ export default {
                 }
             },
             {
-                name: 'Company',
+                name: 'ក្រុមហ៊ុន',
                 icon: 'icon-student',
                 path: '/company',
                 iconBg: {

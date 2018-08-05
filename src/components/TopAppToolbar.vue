@@ -7,7 +7,7 @@
         <md-button class="md-icon-button md-dense" @click="toggleMenu" v-else>
             <md-icon>menu</md-icon>
         </md-button>
-        <h3>SCMS</h3>
+        <h3 class="title">ប្រព័ន្ធគ្រប់គ្រងការបណ្តុះបណ្តាលវគ្គខ្លី</h3>
     </div>
     <div class="md-toolbar-section-end">
         <md-menu md-direction="bottom-end">
@@ -49,3 +49,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .title{
+        font-family: 'KhmerOSMuolpali'
+    }
+</style>

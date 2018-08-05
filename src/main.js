@@ -6,11 +6,32 @@ import router from './router';
 import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
+import Vuelidate from 'vuelidate';
+import "vue-snotify/styles/material.css";
+
+// scms icon
+// import "./icons/icon.css";
+
+// font-family
+import "./styles/fonts.css";
+
+// scss file
+import "./styles/index.scss";
+
+import Snotify, { SnotifyPosition } from 'vue-snotify'
 import {
   store
 } from '../src/store/store.js';
 
+const options = {
+  toast: {
+    position: SnotifyPosition.rightTop
+  }
+}
+
 Vue.use(VueMaterial);
+Vue.use(Vuelidate);
+Vue.use(Snotify, options);
 
 Vue.config.productionTip = false;
 

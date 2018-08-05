@@ -13,7 +13,7 @@
                 <div class="sub-card" :style="item.style">
                     <span class="sub-card-value">{{item.total}}</span>
                 </div>
-                <h3 class="card-title">{{item.name}}</h3>
+                <span class="card-title">{{item.name}}</span>
             </md-card>
         </div>
     </div>
@@ -25,7 +25,7 @@ import {colors} from '@/styles/colors.js'
 export default {
     data: () => ({
         dashboardItems: [{
-                name: 'Student',
+                name: 'សិស្ស',
                 icon: 'icon-student',
                 path: '/student',
                 total: 50,
@@ -35,7 +35,7 @@ export default {
 
             },
             {
-                name: 'Register',
+                name: 'ចុះឈ្មោះ',
                 icon: 'icon-register',
                 path: '/student',
                 total: 50,
@@ -44,7 +44,7 @@ export default {
                 }
             },
             {
-                name: 'Attendance',
+                name: 'អវត្តមាន',
                 icon: 'icon-attendance',
                 path: '/student',
                 total: 30,
@@ -53,7 +53,7 @@ export default {
                 }
             },
             {
-                name: 'Exam',
+                name: 'ពត៌មានការប្រឡង',
                 icon: 'icon-exam',
                 path: '/student',
                 total: 10,
@@ -62,7 +62,7 @@ export default {
                 }
             },
             {
-                name: 'Certificate',
+                name: 'ការចេញវិញ្ញាបនបត្រ',
                 icon: 'icon-certificate',
                 path: '/student',
                 total: 10,
@@ -71,7 +71,7 @@ export default {
                 }
             },
             {
-                name: 'Report',
+                name: 'របាយការណ៍',
                 icon: 'icon-report',
                 path: '/student',
                 total: 5,
@@ -80,7 +80,7 @@ export default {
                 }
             },
             {
-                name: 'Setting',
+                name: 'ការកំណត់',
                 icon: 'icon-setting',
                 path: '/setting',
                 total: 5,
@@ -119,6 +119,7 @@ export default {
     bottom: -120px;
     right: 0;
     left: 0;
+    font-family: 'KhmerOSBattambang'
 }
 
 .sub-card {

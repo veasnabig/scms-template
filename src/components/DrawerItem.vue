@@ -15,17 +15,17 @@ export default {
     data: () => ({
         selected: 0,
         drawerItems: [{
-                name: "Dashboard",
+                name: "ផ្ទាំងគ្រប់គ្រង",
                 icon: "icon-student",
                 path: "/"
             },
             {
-                name: "Student",
+                name: "សិស្ស",
                 icon: "icon-student",
                 path: "/student"
             },
             {
-                name: "Setting",
+                name: "ការកំណត់",
                 icon: "icon-setting",
                 path: "/setting"
             }
@@ -56,6 +56,9 @@ $iconSize:40px;
 
 .md-list-item-text {
     color: #fff;
+    font-size: 20px;
+    padding:10px;
+    font-family: 'KhPreyVeng';
 }
 
 .md-list.md-theme-default .md-list-item-container:not(.md-list-item-default):not([disabled]):hover {
