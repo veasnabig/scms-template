@@ -13,15 +13,20 @@
                 <div class="sub-card" :style="item.style">
                     <span class="sub-card-value">{{item.total}}</span>
                 </div>
-                <span class="card-title">{{item.name}}</span>
+                <!-- <div class="md-layout-item card-title">{{item.name}}</div> -->
             </md-card>
+            <div class="" style="margin-top:35px;font-family:'khPreyVeng';font-size:18px;">
+                {{item.name}}
+            </div>
         </div>
     </div>
 </div>
 </template>
 
 <script>
-import {colors} from '@/styles/colors.js'
+import {
+    colors
+} from '@/styles/colors.js'
 export default {
     data: () => ({
         dashboardItems: [{
@@ -95,7 +100,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import "../styles/index";
+@import "../styles/scss/index";
 @import '../icons/icon.css';
 .md-card {
     width: 120px;
@@ -112,14 +117,9 @@ export default {
 }
 
 .card-title {
-    margin-top: 30px;
-    font-size: 20px;
-    transition: all .5s;
-    position: absolute;
-    bottom: -120px;
-    right: 0;
-    left: 0;
-    font-family: 'KhmerOSBattambang'
+    margin-top: 35px;
+    font-family: 'khPreyVeng';
+    font-size: 18px;
 }
 
 .sub-card {
@@ -156,14 +156,17 @@ export default {
     transform: skewX(-25deg);
 }
 
+.md-layout-item:hover {
+    .card-title {
+        transform: translateY(-20px) scale(.7); // transform: scale(.8);
+    }
+}
+
 .md-card:hover {
     transform: scale(1.2);
     transition: all .5s;
     .md-icon {
         transform: scale(1.3);
-    }
-    .card-title {
-        transform: translateY(-20px) scale(.7); // transform: scale(.8);
     }
 }
 

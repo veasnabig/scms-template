@@ -1,0 +1,78 @@
+@import "./scss/index";
+/* form */
+.md-input {
+    font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif !important;
+    font-style: normal;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+.md-label {
+    font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif;
+}
+
+/* button */
+.md-add-button-modify,
+.md-reset-button-modify {
+    box-shadow: none !important;
+    border-radius: 50px;
+    background: $white !important;
+    border: 1px solid;
+    font-family: 'KhmerOSBattambang', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding:5px;
+    height: 40px;
+}
+
+.md-add-button-modify {
+    color: #448aff !important;
+}
+
+.md-reset-button-modify {
+    color: $black !important;
+}
+
+/* table */
+.md-table-cell {
+    text-align: left;
+}
+.md-table-head{
+    text-align: left;
+}
+
+.md-table-cell-container{
+    font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.md-table-head-label{
+    font-family: 'Dangrek',Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+.md-empty-state-label{
+    font-family: 'Dangrek',Arial, Helvetica, sans-serif;
+}
+.md-empty-state-description{
+    font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif;
+}
+// snotify
+// .snotify {
+//     display: block;
+//     position: absolute;
+//     width: 300px;
+//     z-index: 9999;
+//     top: 20px;
+//     right: 20px;
+//     -webkit-box-sizing: border-box;
+//     box-sizing: border-box;
+//     pointer-events: none;
+// }
+.snotifyToast__title {
+    // font-size: 1.8em;
+    // line-height: 1.2em;
+    // margin-bottom: 5px;
+    // color: #fff; 
+    font-family: 'Dangrek',Arial, Helvetica, sans-serif;
+}
+.snotifyToast__body {
+    // font-size: 1em; 
+    font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif; 
+}

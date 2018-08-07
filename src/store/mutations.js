@@ -15,10 +15,25 @@ export default {
     },
 
     // Courses 
-    addCourses(state,courses){
+    addCourses(state, courses) {
         const existCourses = state.courses.filter(o => o.id === courses.id)
         if (existCourses.length === 0) {
             state.courses.push(courses);
         }
+    },
+    updateCourses(state, courses) {
+        const findIndex = state.courses.findIndex((o => o.id == courses.id));
+        state.courses.map(o => {
+            if (o.id == courses.id) {
+                o.name = courses.name,
+                    o.price = courses.price,
+                    o.duration = courses.duration,
+                    o.description = courses.description
+            }
+        });
+    },
+    deleteCourses(state, courses) {
+        const findCourses = state.courses.find(o => o.id === courses.id);
+        state.courses.splice(state.courses.indexOf(findCourses), 1);
     }
 }

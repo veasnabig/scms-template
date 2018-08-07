@@ -16,7 +16,7 @@ export default {
         selected: 0,
         drawerItems: [{
                 name: "ផ្ទាំងគ្រប់គ្រង",
-                icon: "icon-student",
+                icon: "icon-dashboard",
                 path: "/"
             },
             {
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/index";
+@import "../styles/scss/index";
 @import '../icons/icon.css';
 $iconSize:40px;
 .drawer-icon {

@@ -1,19 +1,18 @@
 <template>
 <div>
-    <md-dialog :md-active.sync="showAddCoursesDialog" :md-click-outside-to-close='false' :md-close-on-esc='false'>
-
+    <md-dialog :md-active.sync="showAddCoursesDialog" :md-click-outside-to-close='false' :md-close-on-esc='false' @keydown.esc="closeDialog">
         <md-dialog-title class="dialog-title-wrapper">
             <div class="md-layout md-gutter">
                 <div class="md-layout-item md-size-50">
                     <div class="icon-wrapper">
                         <i class="icon" :class="cardItem.icon"></i>
                     </div>
-                    <span class="dialog-title">{{cardItem.name}}</span>
+                    <span class="dialog-title">{{cardItem.addTitle}}</span>
                 </div>
                 <div class="md-layout-item md-size-50">
                     <div class="md-toolbar-section-end">
                         <md-button class="md-icon-button" @click="closeDialog">
-                            <span>X</span>
+                            <i class="icon-corss" style="font-size:20px;"></i>
                         </md-button>
                     </div>
                 </div>
@@ -53,22 +52,22 @@
                 <div class="md-layout-item md-size-100 md-small-size-100">
                     <md-field>
                         <label class="md-label">បរិយាយ</label>
-                        <md-textarea class="md-input"></md-textarea>
+                        <md-textarea class="md-input" v-model="form.description"></md-textarea>
                     </md-field>
                 </div>
 
-                <div class="md-layout-item md-size-100 md-small-size-100">
+                <!-- action button -->
+                <div class="md-layout-item md-size-100 md-small-size-100" style="padding:20px">
                     <div class="md-toolbar-section-end">
-                        <md-button class="md-raised md-primary" @click="validateForm">Add New</md-button>
+                        <icon-button :iconButton="iconButton.buttonReset" :onClick="clearForm" />
+                        <icon-button :iconButton="iconButton.buttonSave" :onClick="validateForm" />
                     </div>
                 </div>
-
             </div>
-
-            <md-progress-bar md-mode="indeterminate" v-if="sending" />
-            <!-- <md-snackbar :md-active.sync="userSaved">The user {{ lastUser }} was saved with success!</md-snackbar> -->
         </form>
-        <vue-snotify/>
+        {{increaseId}}
+        <vue-snotify v-show="showNotify==true" />
+       
     </md-dialog>
 
 </div>
@@ -79,6 +78,7 @@ import {
     colors
 } from "@/styles/colors.js";
 import ScmsCard from "@/components/SCMSCard";
+import IconButton from '@/components/IconButton';
 import {
     validationMixin
 } from "vuelidate";
@@ -90,11 +90,34 @@ import {
 } from "vuelidate/lib/validators";
 export default {
     components: {
-        ScmsCard
+        ScmsCard,
+        IconButton
     },
-    props: ["showAddCoursesDialog", "cardItem"],
+    props: {
+        showAddCoursesDialog: Boolean,
+        cardItem: Object,
+        coursesItem: {}
+    },
     mixins: [validationMixin],
     data: () => ({
+        showNotify: false,
+        iconButton: {
+            buttonSave: {
+                text: 'រក្សាទុក',
+                icon: 'icon-save',
+                iconBg: {
+                    background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`
+                }
+            },
+            buttonReset: {
+                text: 'កំណត់ឡើងវិញ',
+                icon: 'icon-reset',
+                iconBg: {
+                    background: `linear-gradient(${colors.lightTeal}, ${colors.teal})`
+                }
+            }
+        },
+        coursesId: "",
         form: {
             id: "",
             name: "",
@@ -103,12 +126,29 @@ export default {
             description: ""
         },
         userSaved: false,
-        sending: false,
         lastUser: null
     }),
     computed: {
-        maxId() {
-            return this.$store.getters.getCoursesMaxId + 1;
+        increaseId() {
+            // const maxId = this.$store.getters.getCoursesMaxId;
+            // console.log(maxId);
+            // const rs;
+            // if (maxId > 10)
+            //     return `00${+this.$store.getters.getCoursesMaxId + 1}`;
+            // else if (maxId > 100)
+            //     return `0${+this.$store.getters.getCoursesMaxId + 1}`;
+            // else if (maxId > 1000)
+            //     return `${+this.$store.getters.getCoursesMaxId + 1}`;
+            // else
+            //     return `000${+this.$store.getters.getCoursesMaxId + 1}`;
+            this.$store.commit("increaseId", this.coursesItem)
+        }
+    },
+    watch: {
+        coursesItem(props) {
+            if (!!props) {
+                this.getPropCourses(props)
+            }
         }
     },
     validations: {
@@ -125,9 +165,18 @@ export default {
         }
     },
     methods: {
+        getPropCourses(props) {
+            this.coursesId = props.id;
+            this.form = {
+                id: props.id,
+                name: props.name,
+                price: props.price,
+                duration: props.duration,
+                description: props.description
+            };
+        },
         getValidationClass(fieldName) {
             const field = this.$v.form[fieldName];
-
             if (field) {
                 return {
                     "md-invalid": field.$invalid && field.$dirty
@@ -136,28 +185,51 @@ export default {
         },
         clearForm() {
             this.$v.$reset();
-            this.form = {
-                id: "",
-                name: "",
-                price: "",
-                duration: "",
-                description: ""
+            if (!!this.coursesId) {
+                this.getPropCourses(this.coursesItem)
+            } else {
+                this.form = {
+                    id: "",
+                    name: "",
+                    price: "",
+                    duration: "",
+                    description: ""
+                }
             }
+
         },
-        snotify() {
-            this.$snotify.success('Example body content', 'Example title', {
-                timeout: 500,
+        snotify(title, content) {
+            this.$snotify.success(content, title, {
+                timeout: 800,
                 showProgressBar: false,
                 closeOnClick: false,
                 pauseOnHover: true
             });
         },
         addCourses() {
-            this.sending = true
-            this.form.id = this.maxId;
-            this.$store.commit("addCourses", this.form);
-            this.clearForm();
-            this.snotify();
+            this.showNotify = true;
+            if (!!this.coursesId) {
+                this.$store.commit("updateCourses", this.form)
+                this.clearForm();
+                if (!!this.showNotify) {
+                    this.snotify("ជោគជ័យ", "ទិន្ន័យកែប្រែបានជោគជ័យ");
+                }
+                window.setTimeout(() => {
+                    this.showNotify = false;
+                    this.closeDialog();
+                }, 1500)
+            } else {
+                this.form.id = this.increaseId;
+                this.$store.commit("addCourses", this.form);
+                this.clearForm();
+                if (!!this.showNotify) {
+                    this.snotify("ជោគជ័យ", "បញ្ជូលទិន្ន័យបានជោគជ័យ");
+                }
+                window.setTimeout(() => {
+                    this.showNotify = false;
+                }, 1500);
+            }
+
         },
         validateForm() {
             this.$v.$touch();
@@ -174,31 +246,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../icons/icon.css";
+@import "../../styles/scss/index";
 .md-dialog {
     border-radius: 12px;
     width: 100vh;
-}
-
-.text1 {
-    font-family: 'khPreyVeng';
-}
-
-.text2 {
-    font-family: 'KhBaphnom';
-}
-
-.text3 {
-    font-family: 'KhmerOS_muolpali';
-}
-
-.md-label {
-    font-family: 'KhmerOSBattambang'; // margin-bottom: 5px;
-}
-
-.md-input {
-    font-family: 'KhmerOSBattambang';
-    margin-bottom: 3px;
-    margin-top: 3px;
 }
 
 .dialog-title-wrapper {

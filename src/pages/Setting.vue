@@ -1,7 +1,7 @@
 <template>
 <div style="margint-top:50px;">
     <div class="md-layout md-gutter">
-        <div class="md-layout-item md-size-20" v-for="item,key in cardItem" :key='key'>
+        <div class="md-layout-item md-size-20" style="margin-bottom:40px;" v-for="item,key in cardItem" :key='key'>
             <router-link :to='item.path'>
                 <scms-card :cardItem='item' />
             </router-link>
@@ -30,6 +30,14 @@ export default {
                 }
             },
             {
+                name: 'មុខវិជ្ជា',
+                icon: 'icon-subject',
+                path: '/courses',
+                iconBg: {
+                    background: `linear-gradient(${colors.lightPink}, ${colors.pink})`
+                }
+            },
+            {
                 name: 'គ្រូបង្គោល',
                 icon: 'icon-teacher',
                 path: '/teacher',
@@ -46,7 +54,7 @@ export default {
                 }
             }, {
                 name: 'អ្នកប្រើប្រាស់',
-                icon: 'icon-student',
+                icon: 'icon-user',
                 path: '/user',
                 iconBg: {
                     background: `linear-gradient(${colors.lightTeal}, ${colors.teal})`
@@ -54,7 +62,7 @@ export default {
             },
             {
                 name: 'ក្រុមហ៊ុន',
-                icon: 'icon-student',
+                icon: 'icon-company',
                 path: '/company',
                 iconBg: {
                     background: `linear-gradient(${colors.lightGrey}, ${colors.grey})`

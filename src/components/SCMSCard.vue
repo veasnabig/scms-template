@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../icons/icon.css';
-@import '../styles/index.scss';
+@import '../styles/scss/index.scss';
 $cardHeight:80px;
 $cardWrapperIcon:100px;
 $borderRadius:15px;
@@ -43,14 +43,18 @@ $margin:16px;
     .card-wrapper-icon {
         transform: translateY(-20px) scale(.7); // transform: scale(.8);
     }
+    .card-title{
+        transform: translateX(-20px);
+    }
 }
 
 .card-title {
+    position: absolute;
+    right: 0;
     font-size: $textSize;
-    float: right;
     line-height: $cardHeight;
     margin-right: $margin;
-    transition: all .5s;
+    transition: all 300ms;
     font-family: 'khPreyVeng'
 }
 

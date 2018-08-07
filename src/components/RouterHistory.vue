@@ -1,14 +1,13 @@
 <template>
 <div class="md-transparent md-toolbar-row md-toolbar-row-modify" style="margin-bottom:30px;">
-    <div class="md-toolbar-section-start">  
+    <div class="md-toolbar-section-start">
 
         <!-- route-history -->
         <span v-for="route,key in routeLinks" :key="key" class="wrapper-router-history-btn">
             <md-button 
             class="md-button-text"
             :to="route.path"
-            
-            :class="{activeRouteColor:key == selected}"
+            :class="{activeRouteColor:route.path == path}"
             >{{route.name}}</md-button>
             <md-button @click="removeRouteHistory(route)" class="md-icon-button md-icon-button-close">
                 <md-icon 
@@ -17,12 +16,12 @@
                 >close</md-icon>
             </md-button>
         </span>
+        <!-- @click="clickRoute(key)" -->
 
         <!-- close-all -->
         <span style="position:absolute;right:0;">
             <md-button @click="removeAllRouteHistory" class="md-accent md-raised md-button-modify md-button-text">សម្អាត</md-button>
         </span>
-        <!-- class="md-primary md-raised md-button-modify" -->
 
     </div>
 </div>
@@ -34,7 +33,7 @@ import {
 } from '../store/store.js'
 export default {
     data: () => ({
-        selected: 0,
+        selected: '/',
         path: ''
     }),
     computed: {
@@ -44,6 +43,7 @@ export default {
     },
     watch: {
         $route(route) {
+            this.path = route.path;
             this.$store.commit("addRouteHistory", route);
         }
     },
@@ -54,15 +54,14 @@ export default {
         removeAllRouteHistory() {
             this.$store.commit("removeAllRouteHistory")
         },
+        clickRoute(key) {
+            this.selected = key;
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.activeRouteColor {
-    background: #0099b0;
-}
-
 .wrapper-router-history-btn {
     margin-right: -20px;
 }
@@ -83,10 +82,23 @@ export default {
     border: 1.5px solid #fff;
     padding: 10px;
 }
-.md-button-text{
+
+.activeRouteColor {
+    background: #041723 !important;
+    border-radius: 10px;
+    color: #fff !important;
+    transition: all .5s;
+}
+
+.md-button-text {
     font-family: 'KhPreyVeng';
     font-size: 18px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    transition: all .5s;
+    color: #041723;
 }
+
 .md-icon-button-close {
     margin-left: -30px;
     margin-top: -15px;

@@ -16,7 +16,8 @@ import "vue-snotify/styles/material.css";
 import "./styles/fonts.css";
 
 // scss file
-import "./styles/index.scss";
+// import "./styles/scss/index.scss";
+import "./styles/modify-material-css.scss"
 
 import Snotify, { SnotifyPosition } from 'vue-snotify'
 import {

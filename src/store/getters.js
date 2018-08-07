@@ -5,11 +5,15 @@ export default {
     getCourses(state) {
         return state.courses;
     },
-    getCoursesMaxId(state) {
+    getIncreaseCoursesId(state) {
         if (state.courses.length > 0) {
             const maxId = state.courses.slice(-1)[0];
-            return maxId.id;
+            return +maxId.id + 1;
         }
-
+    },
+    getTotalCourses(state){
+        if(state.courses.length>0){
+            return state.courses.length;
+        }
     }
 }

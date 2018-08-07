@@ -18,7 +18,14 @@
 }
 @font-face {
     font-family: 'KhmerOSBattambang';
-    src:url('../assets/fonts/KhmerOSBattambang.ttf?zcpscj') format('truetype');
-    font-weight: normal;
     font-style: normal;
+    src:url('../assets/fonts/KhmerOSBattambang.ttf') format('truetype');
+    font-weight: normal;
 }
+@font-face {
+    font-family: 'Dangrek';
+    font-style: normal;
+    src:url('../assets/fonts/Dangrek.ttf') format('truetype');
+    font-weight: normal;
+}
+
