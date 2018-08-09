@@ -1,6 +1,6 @@
 <template>
 <div>
-    <md-dialog :md-active.sync="showConfirmDialog" :md-click-outside-to-close='false' :md-close-on-esc='false'>
+    <md-dialog :md-active.sync="showConfirmDialog" :md-click-outside-to-close='false' :md-close-on-esc='false' @keydown.esc="closeDialog">
         <md-dialog-title class="dialog-title-wrapper">
             <div class="md-layout md-gutter">
                 <div class="md-layout-item md-size-100">
@@ -23,11 +23,6 @@
                 <icon-button :iconButton="iconButton.buttonSave" :onClick="handleAccept" />
             </div>
         </div>
-
-        <!-- <md-button class="md-raised md-reset-button-modify">កំណត់ឡើងវិញ</md-button>
-                <md-button class="md-raised md-primary md-add-button-modify">រក្សាទុក</md-button> -->
-
-        <!-- {{button}} -->
     </md-dialog>
 
 </div>

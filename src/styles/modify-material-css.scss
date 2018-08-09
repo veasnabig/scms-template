@@ -10,6 +10,25 @@
     font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif;
 }
 
+.md-menu-content {
+    z-index: 50 !important;
+  }
+
+// table
+.table-title {
+    font-family: 'Dangrek', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: $grey;
+}
+
+.total-record {
+    font-family: 'Dangrek', Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+    margin-right: 5px;
+    font-size: 25px;
+    color:$blue;
+    font-weight: bold;
+}
 /* button */
 .md-add-button-modify,
 .md-reset-button-modify {

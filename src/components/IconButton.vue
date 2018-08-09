@@ -33,7 +33,7 @@ $border-raduis:10px;
     -moz-box-shadow: 0px 7px 25px -1px rgba(230, 230, 230, 1);
     box-shadow: 0px 7px 25px -1px rgba(230, 230, 230, 1);
     .icon-wrapper {
-        width: 45px;
+        width: 50px;
         height: 50px;
         background: linear-gradient($light-grey, $grey);
         margin-top: -5px;

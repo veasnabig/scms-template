@@ -92,7 +92,7 @@ export default {
 
 .md-button-text {
     font-family: 'KhPreyVeng';
-    font-size: 18px;
+    font-size: 15px;
     background: #ecf0f1;
     border-radius: 10px;
     transition: all .5s;

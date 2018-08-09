@@ -1,13 +1,13 @@
 <template>
 <div>
-    <md-dialog :md-active.sync="showAddCoursesDialog" :md-click-outside-to-close='false' :md-close-on-esc='false' @keydown.esc="closeDialog">
+    <md-dialog :md-active.sync="showSubjectDialog" :md-click-outside-to-close='false' :md-close-on-esc='false' @keydown.esc="closeDialog">
         <md-dialog-title class="dialog-title-wrapper">
             <div class="md-layout md-gutter">
                 <div class="md-layout-item md-size-50">
                     <div class="icon-wrapper">
                         <i class="icon" :class="cardItem.icon"></i>
                     </div>
-                    <span class="dialog-title">{{cardItem.addTitle}}</span>
+                    <span class="dialog-title">{{cardItem.name}}</span>
                 </div>
                 <div class="md-layout-item md-size-50">
                     <div class="md-toolbar-section-end">
@@ -25,9 +25,9 @@
             <div class="md-layout md-gutter" style="padding:20px;">
                 <div class="md-layout-item md-size-33 md-small-size-100">
                     <md-field :class="getValidationClass('name')">
-                        <label class="md-label">ឈ្មោះវគ្គ</label>
+                        <label class="md-label">ឈ្មោះមុខវិជ្ជា</label>
                         <md-input v-model="form.name" />
-                        <span class="md-error md-label" v-if="!$v.form.name.required">ឈ្មោះវគ្គត្រូវបំពេញ</span>
+                        <span class="md-error md-label" v-if="!$v.form.name.required">ឈ្មោះមុខត្រូវបំពេញ</span>
                     </md-field>
                 </div>
                 <div class="md-layout-item md-size-33 md-small-size-100">
@@ -87,9 +87,9 @@ export default {
     IconButton
   },
   props: {
-    showAddCoursesDialog: Boolean,
+    showSubjectDialog: Boolean,
     cardItem: Object,
-    coursesItem: {}
+    subjectItem: {}
   },
   mixins: [validationMixin],
   data: () => ({
@@ -110,7 +110,7 @@ export default {
         }
       }
     },
-    coursesId: "",
+    subjectId: "",
     form: {
       id: "",
       name: "",
@@ -122,15 +122,15 @@ export default {
     lastUser: null
   }),
   computed: {
-    getIncreaseCoursesId() {
-      const id = this.$store.getters.getIncreaseCoursesId;
+    getIncreaseSubjectId() {
+      const id = this.$store.getters.getIncreaseSubjectId;
       return increaseId(id);
     }
   },
   watch: {
-    coursesItem(props) {
+    subjectItem(props) {
       if (!!props) {
-        this.getPropCourses(props);
+        this.getPropSubject(props);
       }
     }
   },
@@ -148,8 +148,8 @@ export default {
     }
   },
   methods: {
-    getPropCourses(props) {
-      this.coursesId = props.id;
+    getPropSubject(props) {
+      this.subjectId = props.id;
       this.form = {
         id: props.id,
         name: props.name,
@@ -168,8 +168,8 @@ export default {
     },
     clearForm() {
       this.$v.$reset();
-      if (!!this.coursesId) {
-        this.getPropCourses(this.coursesItem);
+      if (!!this.subjectId) {
+        this.getPropSubject(this.subjectItem);
       } else {
         this.form = {
           id: "",
@@ -188,10 +188,10 @@ export default {
         pauseOnHover: true
       });
     },
-    addCourses() {
+    addSubject() {
       this.showNotify = true;
-      if (!!this.coursesId) {
-        this.$store.commit("updateCourses", this.form);
+      if (!!this.subjectId) {
+        this.$store.commit("updateSubject", this.form);
         this.clearForm();
         if (!!this.showNotify) {
           this.snotify("ជោគជ័យ", "ទិន្ន័យកែប្រែបានជោគជ័យ");
@@ -201,8 +201,8 @@ export default {
           this.closeDialog();
         }, 1500);
       } else {
-        this.form.id = this.getIncreaseCoursesId;
-        this.$store.commit("addCourses", this.form);
+        this.form.id = this.getIncreaseSubjectId;
+        this.$store.commit("addSubject", this.form);
         this.clearForm();
         if (!!this.showNotify) {
           this.snotify("ជោគជ័យ", "បញ្ជូលទិន្ន័យបានជោគជ័យ");
@@ -215,11 +215,11 @@ export default {
     validateForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        this.addCourses();
+        this.addSubject();
       }
     },
     closeDialog() {
-      this.$emit("closeDialog", !this.showAddCoursesDialog);
+      this.$emit("closeDialog", !this.showSubjectDialog);
     }
   }
 };

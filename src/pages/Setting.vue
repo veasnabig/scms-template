@@ -22,19 +22,19 @@ export default {
     },
     data: () => ({
         cardItem: [{
+                name: 'មុខវិជ្ជា',
+                icon: 'icon-subject',
+                path: '/subject',
+                iconBg: {
+                    background: `linear-gradient(${colors.lightPink}, ${colors.pink})`
+                }
+            },
+            {
                 name: 'វគ្គបណ្តុះបណ្តាល',
                 icon: 'icon-courses',
                 path: '/courses',
                 iconBg: {
                     background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`
-                }
-            },
-            {
-                name: 'មុខវិជ្ជា',
-                icon: 'icon-subject',
-                path: '/courses',
-                iconBg: {
-                    background: `linear-gradient(${colors.lightPink}, ${colors.pink})`
                 }
             },
             {

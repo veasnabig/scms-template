@@ -34,6 +34,11 @@ export default new Router({
       component: () => import(`@/pages/Courses/Courses.vue`)
     },
     {
+      path: '/subject',
+      name: 'មុខវិជ្ជា',
+      component: () => import(`@/pages/Subject/Subject.vue`)
+    },
+    {
       path:'/setting',
       name:'ការកំណត់',
       component:()=>import(`@/pages/Setting.vue`)

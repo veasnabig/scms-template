@@ -34,6 +34,7 @@ $margin:16px;
     box-shadow: 0px 8px 76px -15px rgba(212, 212, 212, 1);
     position: relative; // text-align: right;
     line-height: $cardHeight;
+    // background: linear-gradient($light-grey,$grey),
 }
 
 .card:hover {
@@ -55,7 +56,8 @@ $margin:16px;
     line-height: $cardHeight;
     margin-right: $margin;
     transition: all 300ms;
-    font-family: 'khPreyVeng'
+    font-family: 'khPreyVeng';
+    font-weight: bold;
 }
 
 .card-wrapper-icon {
