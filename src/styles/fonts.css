@@ -17,6 +17,12 @@
     font-style: normal;
 }
 @font-face {
+    font-family: 'KhmerOSMuolLight';
+    src:url('../assets/fonts/KhmerOS_muollight.ttf?zcpscj') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
     font-family: 'KhmerOSBattambang';
     font-style: normal;
     src:url('../assets/fonts/KhmerOSBattambang.ttf') format('truetype');
@@ -29,3 +35,9 @@
     font-weight: normal;
 }
 
+@font-face {
+    font-family: 'Barcode';
+    font-style: normal;
+    src:url('../assets/fonts/Code39.ttf') format('truetype');
+    font-weight: normal;
+}

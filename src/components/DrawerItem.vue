@@ -25,6 +25,16 @@ export default {
                 path: "/student"
             },
             {
+                name: "ចុះឈ្មោះ",
+                icon: "icon-register",
+                path: "/register"
+            },
+            {
+                name: "អវត្តមាន",
+                icon: "icon-attendance",
+                path: "/attendance"
+            },
+            {
                 name: "ការកំណត់",
                 icon: "icon-setting",
                 path: "/setting"

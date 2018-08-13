@@ -1,13 +1,14 @@
 <template>
 <div>
-    <md-dialog :md-active.sync="showCoursesDialog" :md-click-outside-to-close='false' :md-close-on-esc='false' @keydown.esc="closeDialog">
+    <md-dialog class="md-scrollbar" :md-active.sync="showTeacherDialog" :md-click-outside-to-close='false' :md-close-on-esc='false' @keydown.esc="closeDialog">
         <md-dialog-title class="dialog-title-wrapper">
             <div class="md-layout md-gutter">
                 <div class="md-layout-item md-size-50">
                     <div class="icon-wrapper">
                         <i class="icon" :class="cardItem.icon"></i>
                     </div>
-                    <span class="dialog-title">{{cardItem.addTitle}}</span>
+                    <span v-if="type==true" class="dialog-title">{{cardItem.editTitle}}</span>
+                    <span v-else class="dialog-title">{{cardItem.name}}</span>
                 </div>
                 <div class="md-layout-item md-size-50">
                     <div class="md-toolbar-section-end">
@@ -25,29 +26,81 @@
             <div class="md-layout md-gutter" style="padding:20px;">
 
                 <!-- name -->
-                <div class="md-layout-item md-size-33 md-small-size-100">
+                <div class="md-layout-item md-size-25 md-small-size-100">
                     <md-field :class="getValidationClass('name')">
-                        <label class="md-label">ឈ្មោះវគ្គ</label>
+                        <label class="md-label">ឈ្មោះគ្រូបង្គោល</label>
                         <md-input v-model="form.name" />
-                        <span class="md-error md-label" v-if="!$v.form.name.required">ឈ្មោះវគ្គត្រូវបំពេញ</span>
+                        <span class="md-error md-label" v-if="!$v.form.name.required">ឈ្មោះគ្រូបង្គោលតម្រូវឱ្យបំពេញ</span>
                     </md-field>
                 </div>
 
-                <!-- price -->
-                <div class="md-layout-item md-size-33 md-small-size-100">
-                    <md-field :class="getValidationClass('price')">
-                        <label class="md-label">តម្លៃ</label>
-                        <md-input type="number" v-model="form.price" />
-                        <span class="md-error md-label" v-if="!$v.form.name.required">តម្លៃត្រូវបំពេញ</span>
+                <!-- gender -->
+                <div class="md-layout-item md-size-25 md-small-size-100">
+                    <md-field :class="getValidationClass('gender')">
+                        <label class="md-label">ភេទ</label>
+                        <md-select v-model="form.gender">
+                            <md-option></md-option>
+                            <md-option value="ប្រុស" class="md-input">ប្រុស</md-option>
+                            <md-option value="ស្រី" class="md-input">ស្រី</md-option>
+                        </md-select>
+                        <span class="md-error">ភេទតម្រូវឱ្យជ្រើសរើស</span>
                     </md-field>
                 </div>
 
-                <!-- duration -->
-                <div class="md-layout-item md-size-33 md-small-size-100">
-                    <md-field :class="getValidationClass('duration')">
-                        <label class="md-label">រយៈពេលសិក្សា</label>
-                        <md-input v-model="form.duration" />
-                        <span class="md-error md-label" v-if="!$v.form.duration.required">រយៈពេលសិក្សាត្រូវបំពេញ</span>
+                <!-- dob -->
+                <div class="md-layout-item md-size-25 md-small-size-100">
+                    <md-field :class="getValidationClass('dob')">
+                        <vue-datepicker :date="date" v-model="date" />
+                    </md-field>
+                </div>
+
+                <!-- married-status -->
+                <div class="md-layout-item md-size-25 md-small-size-100">
+                    <md-field :class="getValidationClass('marriedStatus')">
+                        <label class="md-label">ស្ថានភាពគ្រួសារ</label>
+                        <md-select v-model="form.marriedStatus">
+                            <md-option></md-option>
+                            <md-option value="single" class="md-select">លីវ</md-option>
+                            <md-option value="married" class="md-input">រៀបការ</md-option>
+                        </md-select>
+                        <span class="md-error">ស្ថានភាពគ្រួសារតម្រូវឱ្យជ្រើសរើស</span>
+                    </md-field>
+                </div>
+
+                <!-- tel -->
+                <div class="md-layout-item md-size-25 md-small-size-100">
+                    <md-field :class="getValidationClass('tel')">
+                        <label class="md-label">លេខទូរស័ព្ទ</label>
+                        <md-input v-model="form.tel" class="md-input"></md-input>
+                        <span class="md-error">លេខទូរស័ព្ទតម្រូវឱ្យបំពេញ</span>
+                    </md-field>
+                </div>
+
+                <!-- email -->
+                <div class="md-layout-item md-size-25 md-small-size-100">
+                    <md-field :class="getValidationClass('email')">
+                        <label for="email" class="md-label">សារអេឡិចត្រូនិច</label>
+                        <md-input class="md-input" type="email" name="email" id="email" autocomplete="email" v-model="form.email" />
+                        <!-- <span class="md-error" v-if="!$v.form.email.required">The email is required</span> -->
+                        <span class="md-error" v-if="!$v.form.email.email">Invalid email</span>
+                    </md-field>
+                </div>
+
+                <!-- tel -->
+                <div class="md-layout-item md-size-25 md-small-size-100" />
+                <!-- email -->
+                <div class="md-layout-item md-size-25 md-small-size-100" />
+
+                <div class="md-layout-item md-size-50 md-small-size-100">
+                    <md-field :class="getValidationClass('aob')">
+                        <label class="md-label">ទីកន្លែងកំណើត</label>
+                        <md-textarea class="md-input" v-model="form.aob"></md-textarea>
+                    </md-field>
+                </div>
+                <div class="md-layout-item md-size-50 md-small-size-100">
+                    <md-field :class="getValidationClass('address')">
+                        <label class="md-label">អាសយដ្ឋានបច្ចប្បន្ន</label>
+                        <md-textarea class="md-input" v-model="form.address"></md-textarea>
                     </md-field>
                 </div>
 
@@ -87,9 +140,8 @@
                         </md-table-row>
                     </md-table>
                 </div>
-
                 <!-- action button -->
-                <div class="md-layout-item md-size-100 md-small-size-100" style="padding:20px;margin-top:20px;">
+                <div class="md-layout-item md-size-100 md-small-size-100 modify-dialog-footer">
                     <div class="md-toolbar-section-end">
                         <icon-button :iconButton="iconButton.buttonReset" :onClick="clearForm" />
                         <icon-button :iconButton="iconButton.buttonSave" :onClick="validateForm" />
@@ -108,6 +160,7 @@
 import {
     colors
 } from "@/styles/colors.js";
+import VueDatepicker from '@/components/VueDatepicker';
 
 import searchByName from '@/lib/searchByName.js';
 import increaseId from "@/lib/increaseId.js";
@@ -127,15 +180,20 @@ export default {
     components: {
         ScmsCard,
         IconButton,
-        ConfirmDialog
+        ConfirmDialog,
+        VueDatepicker
     },
     props: [
-        "showCoursesDialog",
+        "showTeacherDialog",
         "cardItem",
-        "coursesItem"
+        "teacherItem",
+        "type"
     ],
     mixins: [validationMixin],
     data: () => ({
+        show: false,
+        date: {},
+        selectedDate: new Date('2018/03/26'),
         showNotify: false,
         showConfirmDialog: false,
         iconButton: {
@@ -154,39 +212,43 @@ export default {
                 }
             }
         },
-        coursesId: "",
-        subjectId:"",
+        teacherId: "",
+        subjectId: "",
         form: {
             id: "",
             name: "",
-            price: "",
-            duration: "",
-            description: ""
+            gender: "",
+            dob: "",
+            marriedStatus: "",
+            tel: "",
+            email: "",
+            aob: "",
+            address: ""
         },
         search: null,
         searched: [],
-        coursesSubject: [],
+        teacherSubject: [],
         subjectDoc: [],
     }),
     computed: {
-        getIncreaseCoursesId() {
-            const id = this.$store.getters.getIncreaseCoursesId;
+        getIncreaseTeacherId() {
+            const id = this.$store.getters.getIncreaseTeacherId;
             return increaseId(id);
         },
         subject() {
             return this.$store.getters.getSubject;
         },
-        courses() {
-            return this.$store.getters.getCourses;
+        teacher() {
+            return this.$store.getters.getTeacher;
         },
         temp() {
             return this.$store.getters.getTemp;
         },
     },
     watch: {
-        coursesItem(val) {
+        teacherItem(val) {
             if (!!val) {
-                this.getPropCourses(val);
+                this.getPropTeacher(val);
                 if (!!val.subjectDoc.length > 0) {
                     val.subjectDoc.map(o => {
                         this.$store.commit("addTemp", o)
@@ -201,25 +263,44 @@ export default {
             name: {
                 required
             },
-            price: {
+            gender: {
                 required
             },
-            duration: {
+            marriedStatus: {
                 required
-            }
+            },
+            tel: {
+                required
+            },
+            email: {
+                // required,
+                email
+            },
+            aob: {
+                required
+            },
+            address: {
+                required
+            },
         }
     },
     methods: {
-        getPropCourses(props) {
+        getPropTeacher(props) {
             if (!!props) {
-                this.coursesId = props.id;
+                const {id,name,gender,dob,marriedStatus,tel,email,aob,address}=props;
+                this.teacherId = props.id;
                 this.form = {
-                    id: props.id,
-                    name: props.name,
-                    price: props.price,
-                    duration: props.duration,
-                    description: props.description
+                    id: id,
+                    name: name,
+                    gender:gender,
+                    dob:dob,
+                    marriedStatus:marriedStatus,
+                    tel:tel,
+                    email:email,
+                    aob:aob,
+                    address:address
                 };
+                this.date.time=dob;
             }
         },
         getValidationClass(fieldName) {
@@ -238,30 +319,32 @@ export default {
                 pauseOnHover: true
             });
         },
-        addCourses() {
+        addTeacher() {
             this.showNotify = true;
-            if (!!this.coursesId) {
+            if (!!this.teacherId) {
                 const updateDoc = {
                     form: this.form,
                     subjectDoc: this.temp
                 };
-                // this.$store.commit("updateCourses", updateDoc);
+                this.$store.commit("updateTeacher", updateDoc);
                 if (!!this.showNotify) {
                     this.snotify("ជោគជ័យ", "ទិន្ន័យកែប្រែបានជោគជ័យ");
                 }
                 window.setTimeout(() => {
                     this.showNotify = false;
                     this.closeDialog();
+                    this.$store.dispatch('deleteTemp');
                     this.clearForm();
-                    this.$store.commit('deleteTemp');
                 }, 1500);
+                
             } else {
-                this.form.id = this.getIncreaseCoursesId;
+                this.form.id = this.getIncreaseTeacherId;
+                this.form.dob = this.date.time;
                 const addDoc = {
                     form: this.form,
                     subjectDoc: this.subjectDoc
                 };
-                this.$store.commit("addCourses", addDoc);
+                this.$store.commit("addTeacher", addDoc);
                 if (!!this.showNotify) {
                     this.snotify("ជោគជ័យ", "បញ្ជូលទិន្ន័យបានជោគជ័យ");
                 }
@@ -275,19 +358,19 @@ export default {
         validateForm() {
             this.$v.$touch();
             if (!this.$v.$invalid) {
-                this.addCourses();
+                this.addTeacher();
             }
         },
         closeDialog() {
             this.clearFormData();
-            this.$emit("closeDialog", !this.showCoursesDialog);
+            this.$emit("closeDialog", !this.showTeacherDialog);
         },
         searchOnTable() {
             this.searched = searchByName(this.subject, this.search)
         },
         getSubjectOnClickRow(subject) {
             if (!!subject) {
-                const existSubject = this.coursesSubject.filter(o => o.id === subject.id);
+                const existSubject = this.teacherSubject.filter(o => o.id === subject.id);
                 if (existSubject.length === 0) {
                     this.subjectDoc.push(subject);
                     this.$store.commit("addTemp", subject)
@@ -298,27 +381,32 @@ export default {
             this.form = {
                 id: "",
                 name: "",
-                price: "",
-                duration: "",
-                description: ""
+                gender: "",
+                dob: "",
+                marriedStatus: "",
+                tel: "",
+                email: "",
+                aob: "",
+                address: ""
             };
+            this.date={time:""};
         },
         clearForm() {
-            this.$v.$reset();
-            if (!!this.coursesId) {
-                if(!!this.coursesItem.subjectDoc.length>0){
-                    this.coursesItem.subjectDoc.map((o)=>{
+            this.$v.$reset();   
+            if (!!this.teacherId) {
+                if (!!this.teacherItem.subjectDoc.length > 0) {
+                    this.teacherItem.subjectDoc.map((o) => {
                         this.$store.commit("addTemp", o);
                     });
-                    this.getPropCourses(this.coursesItem);
+                    this.getPropTeacher(this.teacherItem);
                 }
             } else {
-                this.$store.commit('deleteTemp')
+                this.$store.commit('deleteTemp');
                 this.clearFormData();
             }
         },
         confirmDialog(item) {
-            this.subjectId=item.id;
+            this.subjectId = item.id;
             this.showConfirmDialog = !this.showConfirmDialog;
         },
         handleAccept(val) {
@@ -347,8 +435,10 @@ export default {
 @import "../../styles/scss/index";
 .md-dialog {
     border-radius: 12px; // width: 100%;
-    width: 70% !important;
-    height: 90% !important;
+    width: 95% !important;
+    height: 95% !important;
+    max-width: none !important;
+    max-height: none !important; // overflow-y: scroll;
 }
 
 .dialog-title-wrapper {
@@ -370,5 +460,19 @@ export default {
         line-height: 50px;
         font-family: "khPreyVeng";
     }
+}
+
+.md-datepicker-dialog.md-theme-default {
+    position: relative !important;
+    top: 0;
+}
+
+.modify-dialog-footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 </style>

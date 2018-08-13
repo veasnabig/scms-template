@@ -87,7 +87,7 @@ export default {
     background: #041723 !important;
     border-radius: 10px;
     color: #fff !important;
-    transition: all .5s;
+    transition: all .3s;
 }
 
 .md-button-text {

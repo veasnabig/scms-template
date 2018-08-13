@@ -42,7 +42,7 @@ export default {
             {
                 name: 'ចុះឈ្មោះ',
                 icon: 'icon-register',
-                path: '/student',
+                path: '/register',
                 total: 50,
                 style: {
                     background: `linear-gradient(${colors.lightPink}, ${colors.pink})`
@@ -51,7 +51,7 @@ export default {
             {
                 name: 'អវត្តមាន',
                 icon: 'icon-attendance',
-                path: '/student',
+                path: '/attendance',
                 total: 30,
                 style: {
                     background: `linear-gradient(${colors.lightPink}, ${colors.purple})`

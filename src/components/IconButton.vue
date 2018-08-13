@@ -1,7 +1,7 @@
 <template>
 <div class="button-wrapper" @click="onClick">
     <div class="icon-wrapper" :style="iconButton.iconBg">
-        <i class="md-icon icon" :class="iconButton.icon"/>
+        <i class="md-icon icon" :class="iconButton.icon" />
     </div>
     <div class="text-wrapper">{{iconButton.text}}</div>
 </div>
@@ -9,8 +9,8 @@
 
 <script>
 export default {
-    props:{
-        iconButton:Object,
+    props: {
+        iconButton: Object,
         onClick: {
             type: Function
         }
@@ -23,7 +23,7 @@ export default {
 @import "../icons/icon.css";
 $border-raduis:10px;
 .button-wrapper {
-    width: 170px;
+    width: 190px;
     height: 40px;
     background: $white;
     line-height: 40px;
@@ -43,7 +43,7 @@ $border-raduis:10px;
         color: $white;
         border-radius: $border-raduis;
         transition: all .4s;
-        .icon{
+        .icon {
             font-size: 30px !important;
             transition: all .4s;
         }
@@ -56,14 +56,19 @@ $border-raduis:10px;
         font-family: 'KhmerOSBattambang', Arial, Helvetica, sans-serif;
         transition: all .4s;
         font-size: 15px;
+        // .text-wrapper-icon {
+        //     font-size: 38px !important;
+        //     color: $green !important;
+        // }
     }
 }
-.button-wrapper:hover{
+
+.button-wrapper:hover {
     cursor: pointer;
-    .icon-wrapper{
-        transform: translateY(-5px) scale(.8);   
+    .icon-wrapper {
+        transform: translateY(-5px) scale(.8);
     }
-    .text-wrapper{
+    .text-wrapper {
         transform: translateX(-10px);
     }
 }

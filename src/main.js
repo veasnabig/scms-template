@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import VueMaterial from 'vue-material';
+// import DatePicker from 'vue-md-date-picker';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
 import Vuelidate from 'vuelidate';
@@ -14,6 +15,9 @@ import "vue-snotify/styles/material.css";
 
 // font-family
 import "./styles/fonts.css";
+
+// print
+import "./styles/print.css";
 
 // scss file
 // import "./styles/scss/index.scss";
@@ -33,6 +37,7 @@ const options = {
 Vue.use(VueMaterial);
 Vue.use(Vuelidate);
 Vue.use(Snotify, options);
+// Vue.use(DatePicker);
 
 Vue.config.productionTip = false;
 

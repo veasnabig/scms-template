@@ -16,9 +16,10 @@ import {
     colors
 } from '@/styles/colors.js';
 import ScmsCard from '@/components/SCMSCard';
+
 export default {
     components: {
-        ScmsCard
+        ScmsCard,
     },
     data: () => ({
         cardItem: [{

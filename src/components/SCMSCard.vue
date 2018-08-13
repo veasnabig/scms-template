@@ -4,7 +4,9 @@
         <div class="card-wrapper-icon" :style="cardItem.iconBg">
             <i class="md-icon icon" :class="cardItem.icon"></i>
         </div>
-        <span class="card-title">{{cardItem.name}}</span>
+        <span class="card-title">{{cardItem.name}} 
+            <!-- <i class="md-icon icon-left-point card-title-icon" />{{titleIcon}} -->
+        </span>
     </div>
 </div>
 </template>
@@ -33,8 +35,7 @@ $margin:16px;
     -moz-box-shadow: 0px 8px 76px -15px rgba(212, 212, 212, 1);
     box-shadow: 0px 8px 76px -15px rgba(212, 212, 212, 1);
     position: relative; // text-align: right;
-    line-height: $cardHeight;
-    // background: linear-gradient($light-grey,$grey),
+    line-height: $cardHeight; // background: linear-gradient($light-grey,$grey),
 }
 
 .card:hover {
@@ -44,8 +45,12 @@ $margin:16px;
     .card-wrapper-icon {
         transform: translateY(-20px) scale(.7); // transform: scale(.8);
     }
-    .card-title{
+    .card-title {
         transform: translateX(-20px);
+        .card-title-icon {
+            transform: translateX(0);
+            transform: scale(1.2);
+        }
     }
 }
 
@@ -58,6 +63,13 @@ $margin:16px;
     transition: all 300ms;
     font-family: 'khPreyVeng';
     font-weight: bold;
+    color:#27ae60;
+    .card-title-icon {
+        transition: all 300ms;
+        font-size: 60px !important;
+        color: $red;
+        margin-left: 12px;
+    }
 }
 
 .card-wrapper-icon {
@@ -69,6 +81,7 @@ $margin:16px;
     line-height: $cardWrapperIcon;
     position: absolute;
     top: -10px;
+    z-index: 10;
 }
 
 .icon {

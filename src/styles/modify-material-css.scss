@@ -6,7 +6,11 @@
     margin-bottom: 3px;
     margin-top: 3px;
 }
-.md-label {
+.md-list-item-text{
+    font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif !important;
+    font-size: 15px !important;
+}
+.md-label,.md-stepper-label {
     font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif;
 }
 
@@ -72,18 +76,6 @@
 .md-empty-state-description{
     font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif;
 }
-// snotify
-// .snotify {
-//     display: block;
-//     position: absolute;
-//     width: 300px;
-//     z-index: 9999;
-//     top: 20px;
-//     right: 20px;
-//     -webkit-box-sizing: border-box;
-//     box-sizing: border-box;
-//     pointer-events: none;
-// }
 .snotifyToast__title {
     // font-size: 1.8em;
     // line-height: 1.2em;
@@ -94,4 +86,26 @@
 .snotifyToast__body {
     // font-size: 1em; 
     font-family: 'KhmerOSBattambang',Arial, Helvetica, sans-serif; 
+}
+
+.md-steppers-navigation {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.md-card{
+    border-radius: 12px;
+    -webkit-box-shadow: 0px 8px 76px -15px rgba(212, 212, 212, 1);
+    -moz-box-shadow: 0px 8px 76px -15px rgba(212, 212, 212, 1);
+    box-shadow: 0px 8px 76px -15px rgba(212, 212, 212, 1);
+    padding:3px;
+}
+
+tr {
+    // background: red;
+    border-radius: 12px;
+    // .md-table-row{
+    //     background: red;
+    // }
 }

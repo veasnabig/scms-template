@@ -10,7 +10,7 @@ export default new Router({
       redirect: {
         path: '/404'
       }
-    },  
+    },
     {
       path: '/404',
       name: 'រកមិនឃើញ',
@@ -26,7 +26,7 @@ export default new Router({
     {
       path: '/student',
       name: 'សិស្ស',
-      component: () => import(`@/pages/Student.vue`)
+      component: () => import(`@/pages/Student/Student.vue`)
     },
     {
       path: '/courses',
@@ -39,9 +39,44 @@ export default new Router({
       component: () => import(`@/pages/Subject/Subject.vue`)
     },
     {
-      path:'/setting',
-      name:'ការកំណត់',
-      component:()=>import(`@/pages/Setting.vue`)
+      path: '/register',
+      name: 'ចុះឈ្មោះ',
+      component: () => import(`@/pages/Register/Register.vue`)
+    },
+    {
+      path: '/teacher',
+      name: 'គ្រូបង្គោល',
+      component: () => import(`@/pages/Teacher/Teacher.vue`)
+    },
+    {
+      path: '/attendance',
+      name: 'អវត្តមាន',
+      component: () => import(`@/pages/Attendance.vue`)
+    },
+    {
+      path: '/teacherAttendance',
+      name: 'អវត្តមាន គ្រូបង្គោល',
+      component: () => import(`@/pages/TeacherAttendance/TeacherAttendance.vue`)
+    },
+    {
+      path: '/studentAttendance',
+      name: 'អវត្តមាន សិស្ស',
+      component: () => import(`@/pages/StudentAttendance/StudentAttendance.vue`)
+    },
+    {
+      path: '/user',
+      name: 'អ្នកប្រើប្រាស់',
+      component: () => import(`@/pages/User/User.vue`)
+    },
+    {
+      path: '/company',
+      name: 'ក្រុមហ៊ុន',
+      component: () => import(`@/pages/Company/Company.vue`)
+    },
+    {
+      path: '/setting',
+      name: 'ការកំណត់',
+      component: () => import(`@/pages/Setting.vue`)
     }
   ]
 })

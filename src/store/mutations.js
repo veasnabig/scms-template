@@ -48,6 +48,49 @@ export default {
         state.courses.splice(state.courses.indexOf(findCourses), 1);
     },
 
+    // teacher
+    addTeacher(state, teacher) {
+        const existTeacher = state.teacher.filter(o => o.id === teacher.form.id);
+        const {id,name,gender,dob,marriedStatus,tel,email,aob,address} = teacher.form;
+        const getTeacher = {
+            id: id,
+            name: name,
+            gender:gender,
+            dob:dob,
+            marriedStatus:marriedStatus,
+            tel:tel,
+            email:email,
+            aob:aob,
+            address:address,
+            subjectDoc: teacher.subjectDoc
+        }
+        if (existTeacher.length === 0) {
+            state.teacher.push(getTeacher);
+        }
+    },
+    updateTeacher(state, teacher) {
+        const findIndex = state.teacher.findIndex((o => o.id == teacher.form.id));
+        const {id,name,gender,dob,marriedStatus,tel,email,aob,address} = teacher.form;
+        console.log(teacher.subjectDoc);
+        state.teacher.map(o => {
+            if (o.id == id) {
+                o.name = name,
+                o.gender = gender,
+                o.dob = dob,
+                o.marriedStatus=marriedStatus,
+                o.tel=tel,
+                o.email=email,
+                o.aob=aob,
+                o.address=address
+                o.subjectDoc = teacher.subjectDoc
+            }
+        });
+    },
+    deleteTeacher(state, teacher) {
+        const findTeacher = state.teacher.find(o => o.id === teacher.id);
+        state.teacher.splice(state.courses.indexOf(findTeacher), 1);
+    },
+
     // subject 
     addSubject(state, subject) {
         const existSubject = state.subject.filter(o => o.id === subject.id)
@@ -69,6 +112,18 @@ export default {
     deleteSubject(state, subject) {
         const findSubject = state.subject.find(o => o.id === subject.id);
         state.subject.splice(state.subject.indexOf(findSubject), 1);
+    },
+
+    // student
+    addStudent(state, student) {
+        const existStudent = state.student.filter(o => o.id === student.id);
+        if (existStudent.length === 0) {
+            state.student.push(student);
+        }
+    },
+    deleteStudent(state, student) {
+        const findStudent = state.student.find(o => o.id === student.id);
+        state.student.splice(state.student.indexOf(findStudent), 1);
     },
 
     // temp
