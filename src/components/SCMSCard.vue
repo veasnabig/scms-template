@@ -22,7 +22,7 @@ export default {
 @import '../styles/scss/index.scss';
 $cardHeight:80px;
 $cardWrapperIcon:100px;
-$borderRadius:15px;
+$borderRadius:25px;
 $iconSize:70px;
 $textSize:18px;
 $margin:16px;

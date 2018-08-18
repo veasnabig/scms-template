@@ -23,10 +23,10 @@
         <form novalidate class="md-layout" @submit.prevent="validateForm">
 
             <!-- <md-card-content> -->
-            <div class="md-layout md-gutter" style="padding:20px;">
+            <div class="md-layout md-gutter" style="padding:20px;margin-top:-30px;">
 
                 <!-- name -->
-                <div class="md-layout-item md-size-25 md-small-size-100">
+                <div class="md-layout-item md-size-20 md-small-size-100">
                     <md-field :class="getValidationClass('name')">
                         <label class="md-label">ឈ្មោះគ្រូបង្គោល</label>
                         <md-input v-model="form.name" />
@@ -35,7 +35,7 @@
                 </div>
 
                 <!-- gender -->
-                <div class="md-layout-item md-size-25 md-small-size-100">
+                <div class="md-layout-item md-size-10 md-small-size-100">
                     <md-field :class="getValidationClass('gender')">
                         <label class="md-label">ភេទ</label>
                         <md-select v-model="form.gender">
@@ -48,14 +48,14 @@
                 </div>
 
                 <!-- dob -->
-                <div class="md-layout-item md-size-25 md-small-size-100">
+                <div class="md-layout-item md-size-20 md-small-size-100">
                     <md-field :class="getValidationClass('dob')">
                         <vue-datepicker :date="date" v-model="date" />
                     </md-field>
                 </div>
 
                 <!-- married-status -->
-                <div class="md-layout-item md-size-25 md-small-size-100">
+                <div class="md-layout-item md-size-10 md-small-size-100">
                     <md-field :class="getValidationClass('marriedStatus')">
                         <label class="md-label">ស្ថានភាពគ្រួសារ</label>
                         <md-select v-model="form.marriedStatus">
@@ -68,7 +68,7 @@
                 </div>
 
                 <!-- tel -->
-                <div class="md-layout-item md-size-25 md-small-size-100">
+                <div class="md-layout-item md-size-20 md-small-size-100">
                     <md-field :class="getValidationClass('tel')">
                         <label class="md-label">លេខទូរស័ព្ទ</label>
                         <md-input v-model="form.tel" class="md-input"></md-input>
@@ -77,7 +77,7 @@
                 </div>
 
                 <!-- email -->
-                <div class="md-layout-item md-size-25 md-small-size-100">
+                <div class="md-layout-item md-size-20 md-small-size-100">
                     <md-field :class="getValidationClass('email')">
                         <label for="email" class="md-label">សារអេឡិចត្រូនិច</label>
                         <md-input class="md-input" type="email" name="email" id="email" autocomplete="email" v-model="form.email" />
@@ -85,11 +85,6 @@
                         <span class="md-error" v-if="!$v.form.email.email">Invalid email</span>
                     </md-field>
                 </div>
-
-                <!-- tel -->
-                <div class="md-layout-item md-size-25 md-small-size-100" />
-                <!-- email -->
-                <div class="md-layout-item md-size-25 md-small-size-100" />
 
                 <div class="md-layout-item md-size-50 md-small-size-100">
                     <md-field :class="getValidationClass('aob')">
@@ -141,7 +136,13 @@
                     </md-table>
                 </div>
                 <!-- action button -->
-                <div class="md-layout-item md-size-100 md-small-size-100 modify-dialog-footer">
+                <!-- <div class="md-layout-item md-size-100 md-small-size-100 modify-dialog-footer">
+                    <div class="md-toolbar-section-end">
+                        <icon-button :iconButton="iconButton.buttonReset" :onClick="clearForm" />
+                        <icon-button :iconButton="iconButton.buttonSave" :onClick="validateForm" />
+                    </div>
+                </div> -->
+                <div class="md-layout-item md-size-100 md-small-size-100" style="padding:20px;">
                     <div class="md-toolbar-section-end">
                         <icon-button :iconButton="iconButton.buttonReset" :onClick="clearForm" />
                         <icon-button :iconButton="iconButton.buttonSave" :onClick="validateForm" />
@@ -192,7 +193,9 @@ export default {
     mixins: [validationMixin],
     data: () => ({
         show: false,
-        date: {},
+        date: {
+            time:'ថ្ងៃខែឆ្នាំកំណើត'
+        },
         selectedDate: new Date('2018/03/26'),
         showNotify: false,
         showConfirmDialog: false,
@@ -434,11 +437,12 @@ export default {
 @import "../../icons/icon.css";
 @import "../../styles/scss/index";
 .md-dialog {
-    border-radius: 12px; // width: 100%;
-    width: 95% !important;
-    height: 95% !important;
+    border-radius: 12px;
+    width: 90%;
+    // height: 70%;
     max-width: none !important;
-    max-height: none !important; // overflow-y: scroll;
+    max-height: none !important;
+    overflow-y: scroll;
 }
 
 .dialog-title-wrapper {

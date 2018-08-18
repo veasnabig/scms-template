@@ -47,16 +47,9 @@ export default {
                 }
             },
             {
-                name: 'គ្រប់គ្រងអវត្តមាន',
-                icon: 'icon-attendance',
-                path: '/attendance',
-                iconBg: {
-                    background: `linear-gradient(${colors.lightRed}, ${colors.red})`
-                }
-            }, {
                 name: 'អ្នកប្រើប្រាស់',
                 icon: 'icon-user',
-                path: '/user',
+                path: '/notfound',
                 iconBg: {
                     background: `linear-gradient(${colors.lightTeal}, ${colors.teal})`
                 }
@@ -64,7 +57,7 @@ export default {
             {
                 name: 'ក្រុមហ៊ុន',
                 icon: 'icon-company',
-                path: '/company',
+                path: '/notfound',
                 iconBg: {
                     background: `linear-gradient(${colors.lightGrey}, ${colors.grey})`
                 }

@@ -202,9 +202,9 @@ export default {
 .md-dialog {
     border-radius: 12px;
     width: 70%;
-    max-height: 75%;
+    max-height: 70%;
     max-width: none !important;
-    overflow-y: scroll; // max-height: none !important;
+    overflow-y: scroll;
 }
 
 .dialog-title-wrapper {

@@ -19,6 +19,28 @@ export default new Router({
       )
     },
     {
+      path: '/login',
+      name: 'ចូលប្រើប្រាស់',
+      component: () => import(
+        `@/pages/Login/Login.vue`
+      )
+    },
+
+    // {
+    //   path: '/',
+    //   redirect: {
+    //     name: "login"
+    //   }
+    // },
+    // {
+    //   path: "/login",
+    //   name: "login",
+    //   component: () => import(
+    //     `@/pages/Login/Login.vue`
+    //   )
+    // },
+
+    {
       path: '/',
       name: 'ផ្ទាំងគ្រប់គ្រង',
       component: () => import(`@/pages/Dashboard.vue`)
@@ -62,6 +84,61 @@ export default new Router({
       path: '/studentAttendance',
       name: 'អវត្តមាន សិស្ស',
       component: () => import(`@/pages/StudentAttendance/StudentAttendance.vue`)
+    },
+    {
+      path: '/exam',
+      name: 'ពត៌មានការប្រឡង',
+      component: () => import(`@/pages/Exam.vue`)
+    },
+    {
+      path: '/examPaper',
+      name: 'វិញ្ញាសារប្រឡង',
+      component: () => import(`@/pages/ExamPaper/ExamPaper.vue`)
+    },
+    {
+      path: '/examScore',
+      name: 'បញ្ជូលពិន្ទុ',
+      component: () => import(`@/pages/ExamScore/ExamScore.vue`)
+    },
+    {
+      path: '/examResult',
+      name: 'លទ្ធផលប្រឡង',
+      component: () => import(`@/pages/ExamResult/ExamResult.vue`)
+    },
+    {
+      path: '/certificate',
+      name: 'ចេញវិញ្ញាបនបត្រ',
+      component: () => import(`@/pages/Certificate/Certificate.vue`)
+    },
+    {
+      path: '/report',
+      name: 'របាយការណ៍',
+      component: () => import(`@/pages/Report.vue`)
+    },
+    {
+      path: '/coursesReport',
+      name: 'របាយការណ៍ ពត៌មានវគ្គសិក្សា',
+      component: () => import(`@/pages/Report/CoursesReport.vue`)
+    },
+    {
+      path: '/teacherReport',
+      name: 'របាយការណ៍ ពត៌មានគ្រូបង្គោល',
+      component: () => import(`@/pages/Report/TeacherReport.vue`)
+    },
+    {
+      path: '/studentReport',
+      name: 'របាយការណ៍ ពត៌មានសិស្ស',
+      component: () => import(`@/pages/Report/StudentReport.vue`)
+    },
+    {
+      path: '/teacherAttendanceReport',
+      name: 'របាយការណ៍ អវត្តមានគ្រូបង្គោល',
+      component: () => import(`@/pages/Report/TeacherAttendanceReport.vue`)
+    },
+    {
+      path: '/studentAttendanceReport',
+      name: 'របាយការណ៍ អវត្តមានសិស្ស',
+      component: () => import(`@/pages/Report/StudentAttendanceReport.vue`)
     },
     {
       path: '/user',

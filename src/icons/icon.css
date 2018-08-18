@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'scms';
-  src:  url('fonts/scms.eot?98ga8t');
-  src:  url('fonts/scms.eot?98ga8t#iefix') format('embedded-opentype'),
-    url('fonts/scms.ttf?98ga8t') format('truetype'),
-    url('fonts/scms.woff?98ga8t') format('woff'),
-    url('fonts/scms.svg?98ga8t#scms') format('svg');
+  src:  url('fonts/scms.eot?rc279n');
+  src:  url('fonts/scms.eot?rc279n#iefix') format('embedded-opentype'),
+    url('fonts/scms.ttf?rc279n') format('truetype'),
+    url('fonts/scms.woff?rc279n') format('woff'),
+    url('fonts/scms.svg?rc279n#scms') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,33 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-logout:before {
+  content: "\e924";
+}
+.icon-menu:before {
+  content: "\e925";
+}
+.icon-notification:before {
+  content: "\e926";
+}
+.icon-student-attendance:before {
+  content: "\e922";
+}
+.icon-teacher-attendance:before {
+  content: "\e923";
+}
+.icon-add:before {
+  content: "\e921";
+}
+.icon-exam-paper:before {
+  content: "\e91e";
+}
+.icon-exam-result:before {
+  content: "\e91f";
+}
+.icon-exam-score:before {
+  content: "\e920";
+}
 .icon-detail:before {
   content: "\e919";
 }

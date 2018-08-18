@@ -60,16 +60,16 @@ export default {
             {
                 name: 'ពត៌មានការប្រឡង',
                 icon: 'icon-exam',
-                path: '/student',
+                path: '/exam',
                 total: 10,
                 style: {
                     background: `linear-gradient(${colors.lightGreen}, ${colors.green})`
                 }
             },
             {
-                name: 'ការចេញវិញ្ញាបនបត្រ',
+                name: 'ចេញវិញ្ញាបនបត្រ',
                 icon: 'icon-certificate',
-                path: '/student',
+                path: '/certificate',
                 total: 10,
                 style: {
                     background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`
@@ -78,7 +78,7 @@ export default {
             {
                 name: 'របាយការណ៍',
                 icon: 'icon-report',
-                path: '/student',
+                path: '/report',
                 total: 5,
                 style: {
                     background: `linear-gradient(${colors.lightYellow}, ${colors.yellow})`
@@ -105,10 +105,10 @@ export default {
 .md-card {
     width: 120px;
     margin: 0 auto; // display: inline-block;
-    border-radius: 30px;
+    border-radius: 35px;
     text-align: center;
     line-height: 120px;
-    transition: all .5s;
+    transition: all .3s;
     box-shadow: none;
 }
 

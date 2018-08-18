@@ -1,30 +1,35 @@
 <template>
 <div id="app">
-    <md-app md-mode='fixed' style="background:transparent;">
-        <!-- toolbar -->
-        <md-app-toolbar md-elevation="0">
-            <top-app-toolbar @toggleMenu="toggleMenu" />
-        </md-app-toolbar>
-
-        <!-- drawer -->
-        <md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
-            <drawer-logo/>
-            <drawer-item/>
-        </md-app-drawer>
-
-        <md-app>
-            <md-app-toolbar>
-
+    <div v-if="login==true">
+        <md-app md-mode='fixed' style="background:transparent;">
+            <!-- toolbar -->
+            <md-app-toolbar md-elevation="0">
+                <top-app-toolbar @toggleMenu="toggleMenu" />
             </md-app-toolbar>
+
+            <!-- drawer -->
+            <md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
+                <drawer-logo/>
+                <drawer-item/>
+            </md-app-drawer>
+
+            <md-app>
+                <md-app-toolbar>
+
+                </md-app-toolbar>
+            </md-app>
+
+            <!-- content -->
+            <md-app-content class="content-wrapper">
+                <router-history/>
+                <router-view/>
+
+            </md-app-content>
         </md-app>
-
-        <!-- content -->
-        <md-app-content class="content-wrapper">
-            <router-history/>
-            <router-view/>
-
-        </md-app-content>
-    </md-app>
+    </div>
+    <div v-else>
+        <login/>
+    </div>
 
 </div>
 </template>
@@ -34,18 +39,25 @@ import DrawerItem from '@/components/DrawerItem';
 import DrawerLogo from '@/components/DrawerLogo';
 import TopAppToolbar from '@/components/TopAppToolbar';
 import RouterHistory from '@/components/RouterHistory';
+import Login from '@/pages/Login/Login.vue';
 
 export default {
     components: {
         DrawerItem,
         DrawerLogo,
         TopAppToolbar,
-        RouterHistory
+        RouterHistory,
+        Login
     },
     name: "App",
     data: () => ({
         menuVisible: false
     }),
+    computed:{
+        login(){
+            return this.$store.getters.getLoginStatus;
+        }
+    },
     methods: {
         toggleMenu() {
             this.menuVisible = !this.menuVisible;
@@ -56,7 +68,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "~vue-material/dist/theme/engine";
-
 $appDrawerBgColor: rgba(4, 23, 35, 0.8);
 #app {
     font-family: "Avenir", Helvetica, Arial, sans-serif;

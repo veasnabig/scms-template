@@ -13,7 +13,7 @@ export const student = [
     {
         id: "0002",
         name: "yiman",
-        gender: 'ស្រី',
+        gender: 'ប្រុស',
         dob:'04-02-1995',
         marriedStatus:'single',
         tel:'098309385',

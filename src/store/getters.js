@@ -88,9 +88,50 @@ export default {
     getTeacherAttendance(state) {
         return state.teacherAttendance;
     },
+
     // studentAttendance
     getStudentAttendance(state) {
         return state.studentAttendance;
+    },
+
+    // examPaper
+    getExamPaper(state) {
+        return state.examPaper;
+    },
+    getTotalExamPaper(state) {
+        if (state.examPaper.length > 0) {
+            return state.examPaper.length;
+        }
+    },
+
+    // examScore
+    getExamScore(state) {
+        return state.examScore;
+    },
+    getTotalExamScore(state) {
+        if (state.examScore.length > 0) {
+            return state.examScore.length;
+        }
+    },
+
+    // examResult
+    getExamResult(state) {
+        return state.examResult;
+    },
+    getTotalExamResult(state) {
+        if (state.examResult.length > 0) {
+            return state.examResult.length;
+        }
+    },
+
+    // loginStatus
+    getLoginStatus(state){
+        return state.loginStatus;
+    },
+
+    // certificate
+    getCertificate(state) {
+        return state.certificate;
     },
 
     getCoursesSubject(state) {

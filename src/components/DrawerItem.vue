@@ -35,6 +35,21 @@ export default {
                 path: "/attendance"
             },
             {
+                name: "ពត៌មានការប្រឡង",
+                icon: "icon-exam",
+                path: "/exam"
+            },
+            {
+                name: "ចេញវិញ្ញាបនបត្រ",
+                icon: "icon-certificate",
+                path: "/certificate"
+            },
+            {
+                name: "របាយការណ៍",
+                icon: "icon-report",
+                path: "/report"
+            },
+            {
                 name: "ការកំណត់",
                 icon: "icon-setting",
                 path: "/setting"
