@@ -32,6 +32,14 @@
                         <template slot="md-autocomplete-item" slot-scope="{ item }">{{ item.name }}</template>
                     </md-autocomplete>
                 </div>
+                <div class="md-layout-item md-size">
+                    <md-field>
+                        <vue-datepicker :date="date" />
+                    </md-field>
+                </div>
+                <div class="md-layout-item md-size" style="margin-top:10px;">
+                    <icon-button :iconButton="iconButton.buttonSearch" :onClick="searchNull" />
+                </div>
             </div>
             <div class="md-layout md-gutter">
                 <div class="md-layout-item md-size-100">
@@ -89,6 +97,7 @@ import {
 import increaseId from "@/lib/increaseId.js";
 import ScmsCard from "@/components/SCMSCard";
 import IconButton from "@/components/IconButton";
+import VueDatepicker from '@/components/VueDatepicker';
 import {
     validationMixin
 } from "vuelidate";
@@ -101,13 +110,17 @@ import {
 export default {
     components: {
         ScmsCard,
-        IconButton
+        IconButton,
+        VueDatepicker
     },
     props: {
         showExamScoreDialog: Boolean,
         cardItem: Object,
     },
     data: () => ({
+        date: {
+            time: 'កាលបរិច្ឆេទប្រឡង'
+        },
         subjectValue: null,
         coursesValue: null,
         showNotify: false,
@@ -117,6 +130,13 @@ export default {
                 icon: "icon-save",
                 iconBg: {
                     background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`
+                }
+            },
+            buttonSearch: {
+                text: "ស្វែងរក",
+                icon: "icon-detail",
+                iconBg: {
+                    background: `linear-gradient(${colors.lightYellow}, ${colors.yellow})`
                 }
             },
             buttonReset: {
@@ -194,6 +214,9 @@ export default {
         },
         closeDialog() {
             this.$emit("closeDialog", !this.showExamScoreDialog);
+        },
+        searchNull(){
+
         },
         toLower(text) {
             return text.toString().toLowerCase()

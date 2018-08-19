@@ -29,7 +29,7 @@
                                 <div class="md-layout-item md-size-20">
                                     <img src="../../assets/H2E-Edu.png" alt="" class="invoice-logo">
                                 </div>
-                                <div class="md-layout-item md-size-60 invoice-title">បង្កាន់ដៃចុះឈ្មោះ</div>
+                                <div class="md-layout-item md-size-60 invoice-title">បង្កាន់ដៃបង់ប្រាក់</div>
                                 <div class="md-layout-item md-size-20 invoice-barcode">{{registerDoc.id}}</div>
                             </div>
                         </md-card-header>

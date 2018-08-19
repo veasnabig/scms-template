@@ -141,7 +141,7 @@ export default {
     mixins: [validationMixin],
     data: () => ({
         date: {
-            time: ''
+            time: 'ថ្ងៃខែឆ្នាំកំណើត'
         },
         showNotify: false,
         iconButton: {

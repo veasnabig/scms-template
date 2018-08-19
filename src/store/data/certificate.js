@@ -1,16 +1,13 @@
 export const certificate =
     {
         id: "0001",
-        name: "កៅ វាសនា",
+        name: "សារិ រតនៈ",
         gender: 'ប្រុស',
-        dob: '04-02-1995',
-        courses: "កុំព្យូទ័រកម្រិតដំបូង",
+        dob:'01-08-1996',
+        courses: "Basic Computer",
         subjectDoc: [
             {
                 name: "Ms Word 2016",
             },
-            {
-                name: "Ms Excel 2016",
-            }
         ]
     }

@@ -2,7 +2,7 @@
 <div>
     <div class="md-layout md-gutter scms-card-wrapper-modify">
         <div class="md-layout-item md-size-20">
-            <scms-card :cardItem='cardItem' @click.native='showDialog' />
+            <scms-card :cardItem='cardItem' @click.native='showDialog' :pointIcon="true"/>
         </div>
     </div>
     <md-table resize v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header style="height:60vh;padding-top:6vh;">

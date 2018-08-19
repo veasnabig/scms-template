@@ -12,8 +12,8 @@
                 <hr class="style-two">
 
                 <div class="md-layout" style="text-align:center;margin-top:30px;">
-                    <div class="md-layout-item md-size-33"></div>
-                    <div class="md-layout-item md-size-33">
+                    <div class="md-layout-item md-size-10"></div>
+                    <div class="md-layout-item md-size-80">
                         <div class="md-layout md-gutter">
                             <div class="md-layout-item">
                                 <md-autocomplete v-model="coursesValue" :md-options="courses" @md-selected="selectedCoursesValue(coursesValue)" @md-changed="getCourses" @md-opened="getCourses">
@@ -21,7 +21,12 @@
                                     <template slot="md-autocomplete-item" slot-scope="{ item }">{{ item.name }}</template>
                                 </md-autocomplete>
                             </div>
-                            <div class="md-layout-item" style="margin-top:10px;">
+                            <div class="md-layout-item">
+                                <md-field>
+                                    <vue-datepicker :date="date" />
+                                </md-field>
+                            </div>
+                            <div class="md-layout-item md-size-20" style="margin-top:10px;">
                                 <div class="md-toolbar-section-end">
                                     <icon-button :iconButton="iconButton.buttonReset" :onClick="closeDialog" />
                                 </div>
@@ -44,8 +49,8 @@
                             <md-table-head>ថ្ងៃខែឆ្នាំកំណើត</md-table-head>
                             <md-table-head>វគ្គសិក្សា</md-table-head>
                             <md-table-head>Ms Word</md-table-head>
-                            <md-table-head>Ms Excel</md-table-head>
-                            <md-table-head>ពិន្ទុសរុប</md-table-head>
+                            <!-- <md-table-head>Ms Excel</md-table-head> -->
+                            <!-- <md-table-head>ពិន្ទុសរុប</md-table-head> -->
                             <md-table-head>ចំណាត់ថ្នាក់</md-table-head>
                             <md-table-head>លទ្ធផល</md-table-head>
                         </md-table-row>
@@ -57,16 +62,15 @@
                             <md-table-cell>{{result.dob}}</md-table-cell>
                             <md-table-cell>{{result.courses}}</md-table-cell>
                             <md-table-cell>{{result.msWordScore}}</md-table-cell>
-                            <md-table-cell>{{result.msExcelScore}}</md-table-cell>
-                            <md-table-cell>{{result.totalScore}}</md-table-cell>
+                            <!-- <md-table-cell>{{result.msExcelScore}}</md-table-cell> -->
+                            <!-- <md-table-cell>{{result.totalScore}}</md-table-cell> -->
                             <md-table-cell>{{result.rank}}</md-table-cell>
-                            <md-table-cell >
+                            <md-table-cell>
                                 <span v-if="result.result==='ជាប់'" style="color:green;">{{result.result}}</span>
                                 <span v-else style="color:red;">{{result.result}}</span>
                             </md-table-cell>
                         </md-table-row>
 
-                        
                     </md-table>
                 </div>
                 <div class="md-layout-item md-size-15" style="margin-top:10px;">
@@ -85,11 +89,16 @@ import {
     colors
 } from '@/styles/colors.js';
 import IconButton from "@/components/IconButton";
+import VueDatepicker from '@/components/VueDatepicker';
 export default {
     components: {
-        IconButton
+        IconButton,
+        VueDatepicker
     },
     data: () => ({
+        date: {
+            time: 'កាលបរិច្ឆេទប្រឡង'
+        },
         cardItem: {
             name: 'លទ្ធផលការប្រឡង',
             icon: 'icon-exam-result',

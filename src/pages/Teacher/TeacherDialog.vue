@@ -221,7 +221,7 @@ export default {
             id: "",
             name: "",
             gender: "",
-            dob: "",
+            dob: "ថ្ងៃខែឆ្នាំកំណើត",
             marriedStatus: "",
             tel: "",
             email: "",

@@ -2,7 +2,7 @@
 <div>
     <div class="md-layout md-gutter scms-card-wrapper-modify">
         <div class="md-layout-item md-size-25 md-small-size-100">
-            <scms-card :cardItem='cardItem' @click.native='showDialog' />
+            <scms-card :cardItem='cardItem' @click.native='showDialog' :pointIcon="true"/>
         </div>
     </div>
     <md-table resize v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header style="height:60vh;padding-top:6vh;">
@@ -30,11 +30,11 @@
                 <md-button class="md-icon-button md-raised md-primary" @click='showUpdate(item)'>
                     <i class="md-icon icon-edit"/>
                 </md-button>
+                <md-button class="md-icon-button md-raised md-accent" @click='showRegisterDialog=true' style="background:#0BD318;">
+                    <i class="md-icon icon-register"/>
+                </md-button>
                 <md-button class="md-icon-button md-raised md-accent" @click="confirmDialog(item)">
                     <i class="md-icon icon-delete"/>
-                </md-button>
-                <md-button class="md-icon-button md-raised md-accent">
-                    <i class="md-icon icon-register"/>
                 </md-button>
             </md-table-cell>
         </md-table-row>
@@ -42,6 +42,8 @@
     <vue-snotify v-show="showNotify==true" />
 
     <Dialog :showStudentDialog='showStudentDialog' :type="type" :cardItem='cardItem' :studentItem='studentItem' @closeDialog='closeDialog' />
+    <RegisterDialog :showRegisterDialog='showRegisterDialog' :type="type" :cardItem='cardItem' :registerItem='registerItem' @closeDialog='closeDialog' />
+
     <ConfirmDialog :showConfirmDialog='showConfirmDialog' @closeDialog='showConfirmDialog=false' @handleAccept="handleAccept" />
 </div>
 </template>
@@ -52,18 +54,23 @@ import {
 } from '@/styles/colors.js';
 import ScmsCard from '@/components/SCMSCard';
 import Dialog from './StudentDialog';
+import RegisterDialog from '../Register/RegisterDialog.vue';
 import ConfirmDialog from '@/components/ConfirmDialog';
 
 export default {
     components: {
         ScmsCard,
         Dialog,
-        ConfirmDialog
+        ConfirmDialog,
+        RegisterDialog
     },
     data: () => ({
         type: false,
         showStudentDialog: false,
         showConfirmDialog: false,
+        showRegisterDialog:false,
+        registerItem: null,
+        type: false,
         studentItem: {},
         cardItem: {
             name: 'បញ្ជូលពត៌មានសិស្ស',
@@ -125,6 +132,7 @@ export default {
         closeDialog() {
             this.type=false;
             this.showStudentDialog = false;
+            this.showRegisterDialog = false;
         },
         showUpdate(item) {
             this.type = true;

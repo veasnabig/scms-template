@@ -28,9 +28,7 @@
                 <img src="../assets/avatar.png" alt="People">
             </md-avatar>
             <md-menu-content style="margin-top:50px;">
-                <md-menu-item @click="logout"><i class="md-icon icon-logout"/>ចាកចេញ</md-menu-item>
-                <md-menu-item>My Item 2</md-menu-item>
-                <md-menu-item>My Item 3</md-menu-item>
+                <md-menu-item @click="logout" class="signout-item">ចាកចេញ</md-menu-item>
             </md-menu-content>
         </md-menu>
     </div>
@@ -57,5 +55,8 @@ export default {
 @import '../icons/icon.css';
     .title{
         font-family: 'KhmerOSMuolpali'
+    }
+    .signout-item{
+        font-family: 'KhmerOSBattambang'
     }
 </style>

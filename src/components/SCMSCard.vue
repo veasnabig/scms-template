@@ -4,8 +4,10 @@
         <div class="card-wrapper-icon" :style="cardItem.iconBg">
             <i class="md-icon icon" :class="cardItem.icon"></i>
         </div>
+
         <span class="card-title">{{cardItem.name}} 
-            <!-- <i class="md-icon icon-left-point card-title-icon" />{{titleIcon}} -->
+            <i v-if="pointIcon==true" class="md-icon icon-left-point card-title-icon" />
+            <!-- {{titleIcon}} -->
         </span>
     </div>
 </div>
@@ -13,7 +15,7 @@
 
 <script>
 export default {
-    props: ['cardItem']
+    props: ['cardItem','pointIcon']
 }
 </script>
 
@@ -67,7 +69,7 @@ $margin:16px;
     .card-title-icon {
         transition: all 300ms;
         font-size: 60px !important;
-        color: $red;
+        color: $yellow;
         margin-left: 12px;
     }
 }

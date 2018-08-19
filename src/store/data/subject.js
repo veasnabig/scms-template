@@ -36,37 +36,16 @@ export const subject = [
     },
     {
         id: "0006",
-        name: "Adobe Indesign",
-        price: 60,
-        duration: '3 months',
-        description:''
-    },
-    {
-        id: "0007",
         name: "Adobe Premiere",
         price: 70,
         duration: '3 months',
         description:''
     },
     {
-        id: "0008",
+        id: "0007",
         name: "Adobe After Effect",
         price: 90,
         duration: '4 months',
         description:''
     },
-    {
-        id: "0009",
-        name: "Adobe Auddtion",
-        price: 40,
-        duration: '3 months',
-        description:''
-    },
-    {
-        id: "0010",
-        name: "Coreal Draw",
-        price: 40,
-        duration: '3 months',
-        description:''
-    }
 ]

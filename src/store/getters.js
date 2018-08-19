@@ -88,10 +88,20 @@ export default {
     getTeacherAttendance(state) {
         return state.teacherAttendance;
     },
+    getTotalTeacherAttendance(state) {
+        if (state.teacherAttendance.length > 0) {
+            return state.teacherAttendance.length;
+        }
+    },
 
     // studentAttendance
     getStudentAttendance(state) {
         return state.studentAttendance;
+    },
+    getTotalStudentAttendance(state) {
+        if (state.studentAttendance.length > 0) {
+            return state.studentAttendance.length;
+        }
     },
 
     // examPaper

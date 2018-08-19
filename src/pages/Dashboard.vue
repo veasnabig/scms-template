@@ -10,9 +10,11 @@
                         </md-card-media>
                     </md-card-media-cover>
                 </router-link>
-                <div class="sub-card" :style="item.style">
-                    <span class="sub-card-value">{{item.total}}</span>
-                </div>
+                <span v-if="item.total>0">
+                    <div class="sub-card" :style="item.style">
+                        <span class="sub-card-value">{{item.total}}</span>
+                    </div>
+                </span>
                 <!-- <div class="md-layout-item card-title">{{item.name}}</div> -->
             </md-card>
             <div class="" style="margin-top:35px;font-family:'khPreyVeng';font-size:18px;">
@@ -20,6 +22,7 @@
             </div>
         </div>
     </div>
+    {{getTotalStudent}}{{getTotalRegister}}
 </div>
 </template>
 
@@ -33,7 +36,7 @@ export default {
                 name: 'សិស្ស',
                 icon: 'icon-student',
                 path: '/student',
-                total: 50,
+                total: 0,
                 style: {
                     background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`
                 }
@@ -43,7 +46,7 @@ export default {
                 name: 'ចុះឈ្មោះ',
                 icon: 'icon-register',
                 path: '/register',
-                total: 50,
+                total: 0,
                 style: {
                     background: `linear-gradient(${colors.lightPink}, ${colors.pink})`
                 }
@@ -52,27 +55,27 @@ export default {
                 name: 'អវត្តមាន',
                 icon: 'icon-attendance',
                 path: '/attendance',
-                total: 30,
+                // total: 30,
                 style: {
-                    background: `linear-gradient(${colors.lightPink}, ${colors.purple})`
+                    background: `linear-gradient(${colors.lightRed}, ${colors.red})`
                 }
             },
             {
                 name: 'ពត៌មានការប្រឡង',
                 icon: 'icon-exam',
                 path: '/exam',
-                total: 10,
+                // total: 10,
                 style: {
-                    background: `linear-gradient(${colors.lightGreen}, ${colors.green})`
+                    background: `linear-gradient(${colors.lightTeal}, ${colors.teal})`
                 }
             },
             {
                 name: 'ចេញវិញ្ញាបនបត្រ',
                 icon: 'icon-certificate',
                 path: '/certificate',
-                total: 10,
+                // total: 10,
                 style: {
-                    background: `linear-gradient(${colors.lightBlue}, ${colors.blue})`
+                    background: `linear-gradient(${colors.lightGreen}, ${colors.green})`
                 }
             },
             {
@@ -95,6 +98,26 @@ export default {
             }
         ]
     }),
+    computed: {
+        getTotalStudent() {
+            let total = this.$store.getters.getTotalStudent;
+            this.totalStudent(total);
+            // return this.$store.getters.getTotalStudent;
+        },
+        getTotalRegister() {
+            let total = this.$store.getters.getTotalRegister;
+            this.totalRegister(total);
+            // return this.$store.getters.getTotalRegister;
+        }
+    },
+    methods:{
+        totalStudent(val){
+            this.dashboardItems[0].total=val;
+        },
+        totalRegister(val){
+            this.dashboardItems[1].total=val;
+        }
+    }
 }
 </script>
 

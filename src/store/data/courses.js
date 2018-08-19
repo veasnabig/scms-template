@@ -18,14 +18,21 @@ export const courses = [
                 price: 10,
                 duration: '1 month',
                 description: ''
-            }
+            },
+            {
+                id: "0003",
+                name: "Ms power Point",
+                price: 8,
+                duration: '1 month',
+                description:''
+            },
         ],
         description: '',
     },
     {
         id: "0002",
         name: "Graphic Design",
-        price: 120,
+        price: 70,
         duration: '4 months',
         subjectDoc: [
             {
@@ -48,8 +55,8 @@ export const courses = [
     {
         id: "0003",
         name: "Video Editing",
-        price: 20,
-        duration: '2 months',
+        price: 160,
+        duration: '6 months',
         subjectDoc:[
             {
                 id: "0007",

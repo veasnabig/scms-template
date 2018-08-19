@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="md-layout md-gutter">
-        <div class="md-layout-item md-size-25" style="margin-bottom:40px;" v-for="item,key in reportList" :key='key'>
+        <div class="md-layout-item md-size-33" style="margin-bottom:40px;" v-for="item,key in reportList" :key='key'>
             <router-link :to='item.path'>
                 <scms-card :cardItem='item' />
             </router-link>
